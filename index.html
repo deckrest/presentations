@@ -5,19 +5,144 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<title>reveal.js</title>
-
+		<style>
+			.reveal .slide-number{
+				top: 0 !important;
+				bottom: auto !important;
+				background: none !important;
+				color: #a636c286 !important;
+				font-size: 36px !important
+			}
+		</style>
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
-
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<link rel="stylesheet" href="dist/theme/dracula.css">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+
+				<!-- SLIDE 1 -->
+				<section>
+					<h2>контейнеризации vs виртуализации</h2>
+					<section>
+						<img src="./examples/assets/clck.svg" alt="clck">
+					</section>
+					<section>
+						<p>контейнеризации: Технология создания лёгких контейнеров, использующих одно ядро ОС и имеющих собственную среду выполнения приложений.</p>
+					</section>
+					<section>
+						<p>виртуализации: Процесс создания виртуальных машин (ВМ) поверх физического оборудования, где каждая ВМ получает изолированное ядро, память и другие ресурсы.</p>
+					</section>
+				</section>
+
+				<!-- SLIDE 2 -->
+				<section>
+					<h3>Основные особенности Контейнеризации</h3>
+					<section>
+						<p>Общая ОС: Контейнеры работают на одном ядре ОС, но имеют отдельную файловую систему и библиотеки.</p>
+					</section>
+					<section>
+						<p>Контейнерные платформы: Используются инструменты, такие как Docker, Kubernetes для управления контейнерами.</p>
+					</section>
+					<section>
+						<p>Быстрое развертывание: Контейнеры запускаются и масштабируются быстрее, так как нет необходимости загружать отдельную ОС.</p>
+					</section>
+				</section>
+
+				<!-- SLIDE 3 -->
+				<section>
+					<h3>Основные особенности Виртуализации</h3>
+					<section>
+						<p>Полная эмуляция аппаратуры: Каждая ВМ работает с полностью изолированной операционной системой и виртуальным оборудованием.</p>
+					</section>
+					<section>
+						<p>Применение гипервизора: Используются гипервизоры (Hyper-V, VMware, KVM) для управления ВМ.</p>
+					</section>
+					<section>
+						<p>Изоляция на уровне ядра: В каждой ВМ имеется своя ОС и ядро, что обеспечивает высокий уровень безопасности.</p>
+					</section>
+				</section>
+
+				<!-- SLIDE 4 -->
+				<section>
+					<h3>Сравнение по производительности</h3>
+					<section>
+						<p>Контейнеризация: Контейнеры занимают меньше ресурсов и запускаются быстрее, так как используют общее ядро ОС, что дает преимущество в производительности.</p>
+					</section>
+					<section>
+						<p>Виртуализация: За счёт необходимости полного эмулирования ОС и виртуального оборудования может снижать производительность.</p>
+					</section>
+				</section>
+
+				<!-- SLIDE 5 -->
+				<section>
+					<h3>Сравнение по потреблению ресурсов</h3>
+					<section>
+						<p>Контейнеризация: Контейнеры легковесны, так как они разделяют ОС, что позволяет использовать меньше ресурсов для развёртывания.</p>
+					</section>
+					<section>
+						<p>Виртуализация: Виртуальные машины требуют больше ресурсов (CPU, RAM) из-за полной изоляции, включая ядро и библиотеки.</p>
+					</section>
+				</section>
+
+				<!-- SLIDE 6 -->
+				<section>
+					<h3>Сравнение по безопасности</h3>
+					<section>
+						<p>Контейнеризация: Имеет ограничения по безопасности, так как контейнеры разделяют ядро ОС; дополнительная защита может быть реализована, но она менее надёжна по сравнению с ВМ.</p>
+					</section>
+					<section>
+						<p>Виртуализация: Более высокий уровень изоляции, так как каждая ВМ независима от других.</p>
+					</section>
+				</section>
+
+				<!-- SLIDE 7 -->
+				<section>
+					<h3>Сравнение по масштабируемости</h3>
+					<section>
+						<p>Контейнеризация: Очень быстрая масштабируемость, контейнеры можно легко копировать и перемещать между серверами.</p>
+					</section>
+					<section>
+						<p>Виртуализация: Более медленная масштабируемость, так как требуется развертывание полной ОС.</p>
+					</section>
+				</section>
+
+				<!-- SLIDE 8 -->
+				<section>
+					<h3>Сравнение по совместимости</h3>
+					<section>
+						<p>Контейнеризация: Ограничена одной ОС, обычно Linux или совместимой средой, но возможно использование Windows-контейнеров для Windows.</p>
+					</section>
+					<section>
+						<p>Виртуализация: Поддерживает различные ОС на одном сервере (например, Windows и Linux), что удобно для смешанных сред.</p>
+					</section>
+				</section>
+
+				<!-- SLIDE 9 -->
+				<section>
+					<h3>Применение и сценарии использования</h3>
+					<section>
+						<p>Контейнеризация: Идеальна для микросервисов, облачных приложений и случаев, где важны быстрая масштабируемость и лёгкость развёртывания.</p>
+					</section>
+					<section>
+						<p>Виртуализация: Подходит для сложных систем с различными ОС, где нужна высокая безопасность и совместимость.</p>
+					</section>
+				</section>
+
+				<!-- SLIDE 10 -->
+				<section>
+					<h3>Итоги и выводы</h3>
+					<section>
+						<p>Контейнеризация: Легковесна и подходит для современных CI/CD, DevOps, облачных решений. Меньше времени на развёртывание и потребление ресурсов.</p>
+					</section>
+					<section>
+						<p>Виртуализация: Лучше подходит для высокозащищённых изолированных сред с разными ОС. Преимущество в надёжности и безопасности.</p>
+					</section>
+					<section>
+						<p>Заключение: Выбор между контейнерами и ВМ зависит от требований к безопасности, производительности и масштабируемости.</p>
+					</section>
+				</section>
 			</div>
 		</div>
 
@@ -25,6 +150,10 @@
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/chalkboard/plugin.js"></script>
+		<script>
+			Reveal.initialize({ slideNumber: true });
+		</script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -36,5 +165,6 @@
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
+
 	</body>
 </html>
